@@ -15,7 +15,7 @@
     <br>
     <div class="row">
       <div class="col-sm-8 col-sm-offset-2">
-        <form>
+        <form method="post">
           <div class="form-group">
             <label>Eu sou</label>
             <input class="form-control" type="text" name="tipo" id="tipo" v-model="formulario.tipo" placeholder="Ex: Empresa">
@@ -38,7 +38,7 @@
           </div>
           <br>
           <div class="form-group botao">
-            <button type="submit" class="btn btn-info" @click="submitForm">Enviar</button>
+            <button type="submit" class="btn btn-info" @click.prevent="submitForm">Enviar</button>
           </div>
         </form>
       </div>
@@ -46,7 +46,6 @@
   </div>
 </template>
 <script>
-import * as firebase from "firebase";
 export default {
   data() {
     return {
@@ -64,7 +63,6 @@ export default {
   },
   methods: {
     submitForm() {
-      console.log("entrou valida form");
       // VAI VALIDAR OS CAMPOS
       if (this.formulario.tipo == "") {
         alert("Preencha quem você é!");
@@ -85,19 +83,23 @@ export default {
         this.formulario.assunto != "" &&
         this.formulario.email != ""
       ) {
-        firebase
-          .database()
-          .ref(`Contato`)
-          .push(this.formulario)
-          .then(() => {
-            alert(
-              "Contato enviado com sucesso! Te retornarei o mais breve possivel."
-            );
+        let headers = {'Content-Type': 'application/json'};
+
+        this.$http
+          .post(
+            "https://portfolio-gabriel-barreto.firebaseio.com/Contato.json",
+            this.formulario, headers
+          )
+          .then(res => {
             this.formulario.tipo = "";
             this.formulario.nome = "";
             this.formulario.assunto = "";
             this.formulario.email = "";
             this.formulario.phone = "";
+            alert('Contato enviado. Em breve responderei! ;)');
+          }, rej => {
+            console.log(rej);
+            alert('Algo deu errado, tente novamente!');
           });
       }
     }

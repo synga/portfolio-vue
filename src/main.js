@@ -2,20 +2,11 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './App.vue';
 import { routes } from './routes';
-import * as firebase from 'firebase';
-
-// INICIALIZA O FIREBASE
-firebase.initializeApp({
-    apiKey: "",
-    authDomain: "",
-    databaseURL: "",
-    projectId: "",
-    storageBucket: "",
-    messagingSenderId: ""
-});
+import VueResource from 'vue-resource';
 
 // COLOCA PRO VUE UTILIZAR O VUE ROUTER
 Vue.use(VueRouter);
+Vue.use(VueResource);
 
 const router = new VueRouter({
     routes,

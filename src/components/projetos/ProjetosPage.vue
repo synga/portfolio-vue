@@ -6,7 +6,6 @@
   </div>
 </template>
 <script>
-import * as firebase from "firebase";
 import ProjetoCard from "./ProjetoCard.vue";
 import { eventBus } from "../../main";
 
@@ -38,13 +37,12 @@ export default {
     // ACIONA O LOADING
     eventBus.loading(true);
 
-    // BUSCA OS PROJETOS NO FIREBASE
-    firebase
-      .database()
-      .ref("Projeto")
-      .once("value", snapshot => {
-        for (let key in snapshot.val()) {
-          this.projetos.push(snapshot.val()[key]);
+    this.$http
+      .get("https://portfolio-gabriel-barreto.firebaseio.com/Projeto.json")
+      .then(res => {
+        console.log(res);
+        for (let key in res.body) {
+          this.projetos.push(res.body[key]);
         }
         this.projetoAtual = this.projetos[this.numeroProjeto];
       });

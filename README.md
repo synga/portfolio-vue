@@ -15,7 +15,7 @@ O projeto constitui de um portfólio desenvolvido utilizando VueJS e Firebase pa
 * Melhorar o código na página de projetos, feito as pressas e acho que não é está da melhor forma que pode ser.
 * PWA, ao menos para salvar o conteúdo offline, abrir em full screen, uma splash e salvar na tela inicial.
 * Melhorar a performance, no teste do Lighthouse no Chrome ficou com 77 em performance (ou algo assim).
-* Diminuir as dependências do firebase, está bem pesado por ser em Vue (+/- 700kb sem gzip) e tenho certeza que posso melhorar isso mexendo nas dependencias e subindo apenas o que é necessário para produção.
+* Diminuir as dependências do firebase, está bem pesado por ser em Vue (+/- 700kb) e tenho certeza que posso melhorar isso mexendo nas dependencias e subindo apenas o que é necessário para produção.
 
 ### Contato
 Qualquer dúvida, sugestão ou o que for preciso podem entrar em contato comigo pelo [LinkedIn](https://www.linkedin.com/in/gabrielapbarreto/)
