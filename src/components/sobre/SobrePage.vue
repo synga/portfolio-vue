@@ -2,7 +2,6 @@
   <div id="sobre">
     <h1>Sobre</h1>
     <div class="row">
-    <div class="col-xs-12 col-md-8 col-md-offset-2">
       <h2>Quem sou</h2>
       <p>
         Gabriel A. S. Barreto, desenvolvedor Web e Mobile (principalmente), nascido em 1991 e apresentado a tecnologia em 1995 (a um querido Dynavision).<br> Entusiasta
@@ -10,18 +9,14 @@
         francês (básico de pelo menos não morrer de fome se visitar o país).
       </p>
     </div>
-    </div>
     <div class="row">
-    <div class="col-xs-12 col-md-8 col-md-offset-2">
       <h2>Conhecimentos</h2>
       <p>
         Sem especificação de nível, possuo conhecimento em: <br>
         HTML5, CSS3, JavaScript, SCSS, JQuery, Bootstrap 3, TypeScript, VueJS, Angular, Ionic Framework, SQL Server, FireBase, Azure Mobile Services, UX/UI, C#, NodeJS (MEAN Stack), PHP.
       </p>
     </div>
-    </div>
     <div class="row">
-    <div class="col-xs-12 col-md-8 col-md-offset-2">
       <h2>Por que T.I.</h2>
       <p>
         Quando ganhei meu primeiro video-game achava o máximo tudo aquilo, saber que tudo não era real e que algo "vivo" cabia em um cartucho.<br>
@@ -29,9 +24,7 @@
         Vi como a tecnologia era poderosa, cada área existente nela, cada coisa que surgia e por que não usar isso para o bem do ser humano? Por que não fazer uma casa IoT que ajudasse um cego ou uma pessoa com Alzheimer? Por que não fazer com que as pessoas usem um smartphone para melhorar seu exterior? Por que não ajudar a cuidar de alguém? Tudo isso é possivel e tudo isso me motiva.
       </p>
     </div>
-    </div>
     <div class="row">
-    <div class="col-xs-12 col-md-8 col-md-offset-2">
       <h2>Gabriel no pessoal</h2>
       <p>
         Essa é uma pergunta bem RH, mas acho legal que tenham uma base já que isso é um portfólio e as pessoas irão mais cedo ou mais tarde me conhecer.<br>
@@ -40,9 +33,7 @@
         Animal friendly, sempre amigável, formal ou informal, sem estresse, sem pressão, com boa comunicação e expressão.
       </p>
     </div>
-    </div>
     <div class="row">
-    <div class="col-xs-12 col-md-8 col-md-offset-2">
       <h2>O que espero da área</h2>
       <p>
         Num futuro espero poder ser referência em algo, espero que alguém pense em alguma tecnologia, framework, linguagem e logo venha a cabeça "Vou ver o que o Gabriel Barreto tem pra ensinar".<br>
@@ -50,7 +41,6 @@
         que T.I. sempre tem a oferecer. <br>
         Nos estudos pretendo me especializar cada vez mais em front-end, estou aprendendo a criar e trabalhar com ChatBots, estou melhorando meu back-end também e futuramente aprender algo em design.
       </p>
-    </div>
     </div>
   </div>
 </template>
@@ -65,6 +55,12 @@ export default {
 #sobre {
   background-image: url("../../assets/img/patterns/intersection.png");
   background-repeat: repeat;
+  display: flex;
+  flex-direction: column;
+
+  .row {
+    padding: 0 15px;
+  }
 }
 * {
   font-family: "Chau Philomene One";

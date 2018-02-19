@@ -35,6 +35,7 @@ html,
 body,
 .container-fluid {
   height: 100vh;
+  margin: 0;
 }
 
 .row {

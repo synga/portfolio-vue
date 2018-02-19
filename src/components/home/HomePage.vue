@@ -22,15 +22,15 @@
 export default {
   data() {
     return {
-      colunas: window.outerWidth < 768 ? "col-xs-12" : "col-sm-6"
+      colunas: window.outerWidth < 768 ? "phone" : "pc"
     };
   },
   created() {
     window.scrollTo(0, 0);
     // EVENT LISTENER PARA ALTERAR A CLASSE CONFORME A TELA É ALTERADA RESPONSIVAMENTE
     window.addEventListener("resize", e => {
-      if (e.target.outerWidth < 768) this.colunas = "col-xs-12";
-      else this.colunas = "col-sm-6";
+      if (e.target.outerWidth < 768) this.colunas = "phone";
+      else this.colunas = "pc";
     });
   },
   methods: {
@@ -41,15 +41,25 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.col-xs-12 {
+.row {
+  display: flex;
+  flex-wrap: wrap;
   height: 100vh;
-    &.quarto {
-    height: 30vh !important;
+}
+
+.phone {
+  flex: 1 1 100%;
+  height: 100%;
+
+  &.quarto {
+    background-size: cover;
+    background-position-x: -70vh;
   }
 }
 
-.col-sm-6 {
-  height: 50vh;
+.pc {
+  flex: 1 1 50%;
+  height: 50%;
 }
 
 .container-link {
@@ -66,7 +76,7 @@ export default {
     width: 100%;
     height: 100%;
     p {
-      font-size: 5rem;
+      font-size: 3.6rem;
     }
   }
 }
