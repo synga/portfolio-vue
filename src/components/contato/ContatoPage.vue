@@ -1,27 +1,26 @@
 <template>
   <div id="contato">
-    <div class="links row">
+    <div class="links">
       <h4>Me encontre por ai</h4>
-      <div class="col-xs-6 col-md-4 col-md-offset-2">
-        <a href="https://www.linkedin.com/in/gabrielapbarreto/" target="_blank" class="btn btn-info">LinkedIn</a>
+      <div>
+        <a href="https://www.linkedin.com/in/gabrielapbarreto/" target="_blank" class="btn">LinkedIn</a>
       </div>
-      <div class="col-xs-6 col-md-4">
-        <a href="https://stackoverflow.com/users/7325327/gabriel-barreto" target="_blank" class="btn btn-info">Stack Overflow</a>
+      <div>
+        <a href="https://stackoverflow.com/users/7325327/gabriel-barreto" title="Stack Overflow" target="_blank" class="btn">Stack</a>
+      </div>
+      <div>
+        <a href="https://github.com/synga" target="_blank" class="btn">GitHub</a>
       </div>
     </div>
     <br>
 
-    <h4>Tem uma dúvida? Uma proposta? Uma ideia? Precisa que algo seja feito? Quer apenas bater um papo sobre qualquer assunto?<br>Deixe uma mensagem e te respondo ASAP.</h4>
+    <h4>Tem uma dúvida? Uma proposta? Uma ideia? Precisa que algo seja feito? Quer apenas bater um papo?<br>Deixe uma mensagem e te respondo ASAP.</h4>
     <br>
     <div class="row">
       <div class="col-sm-8 col-sm-offset-2">
         <form method="post">
           <div class="form-group">
-            <label>Eu sou</label>
-            <input class="form-control" type="text" name="tipo" id="tipo" v-model="formulario.tipo" placeholder="Ex: Empresa">
-          </div>
-          <div class="form-group">
-            <label>E me chamo</label>
+            <label>Me chamo</label>
             <input class="form-control" type="text" name="nome" id="nome" v-model="formulario.nome" placeholder="Ex: XPTO">
           </div>
           <div class="form-group">
@@ -29,7 +28,7 @@
             <input class="form-control" type="text" name="assunto" id="assunto" v-model="formulario.assunto" placeholder="Ex: Bater um papo">
           </div>
           <div class="form-group">
-            <label>Me responda em meu e-mail </label>
+            <label>Me responda no</label>
             <input class="form-control" type="email" name="email" id="email" v-model="formulario.email">
           </div>
           <div class="form-group">
@@ -50,7 +49,6 @@ export default {
   data() {
     return {
       formulario: {
-        tipo: "",
         nome: "",
         assunto: "",
         email: "",
@@ -64,9 +62,6 @@ export default {
   methods: {
     submitForm() {
       // VAI VALIDAR OS CAMPOS
-      if (this.formulario.tipo == "") {
-        alert("Preencha quem você é!");
-      }
       if (this.formulario.nome == "") {
         alert("Preencha seu nome!");
       }
@@ -78,29 +73,31 @@ export default {
       }
       // VAI ENVIAR O FORM PRO FIREBASE
       if (
-        this.formulario.tipo != "" &&
         this.formulario.nome != "" &&
         this.formulario.assunto != "" &&
         this.formulario.email != ""
       ) {
-        let headers = {'Content-Type': 'application/json'};
+        let headers = { "Content-Type": "application/json" };
 
         this.$http
           .post(
             "https://portfolio-gabriel-barreto.firebaseio.com/Contato.json",
-            this.formulario, headers
+            this.formulario,
+            headers
           )
-          .then(res => {
-            this.formulario.tipo = "";
-            this.formulario.nome = "";
-            this.formulario.assunto = "";
-            this.formulario.email = "";
-            this.formulario.phone = "";
-            alert('Contato enviado. Em breve responderei! ;)');
-          }, rej => {
-            console.log(rej);
-            alert('Algo deu errado, tente novamente!');
-          });
+          .then(
+            res => {
+              this.formulario.nome = "";
+              this.formulario.assunto = "";
+              this.formulario.email = "";
+              this.formulario.phone = "";
+              alert("Contato enviado. Em breve responderei! ;)");
+            },
+            rej => {
+              console.log(rej);
+              alert("Algo deu errado, tente novamente!");
+            }
+          );
       }
     }
   }
@@ -112,7 +109,28 @@ export default {
 }
 
 .links {
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  h4 {
+    flex: 1 1 100%;
+  }
+
+  & > div {
+    text-align: center;
+    flex: 1;
+  }
+
+  .btn {
+    text-decoration: none;
+    background-color: rgb(108, 149, 211);
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+  }
+
+  .btn:hover {
+    background-color: rgb(38, 103, 202);
+  }
 }
 
 h4 {
@@ -126,12 +144,23 @@ form {
   label {
     color: white;
   }
+      .form-group {
+      display: flex;
+      padding: 10px;
+    }
 
   .botao {
     text-align: center;
     .btn {
       font-size: 20px;
+      background-color: rgb(108, 149, 211);
       padding: 10px 20px;
+      color: white;
+      border-radius: 10px;
+    }
+
+    .btn:hover {
+      background-color: rgb(38, 103, 202);
     }
   }
 }
