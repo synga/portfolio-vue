@@ -1,5 +1,6 @@
 <template>
   <div id="contato">
+<<<<<<< HEAD
     <div class="links row" :class="size">
       <h4>Me encontre por ai</h4>
       <div>
@@ -7,13 +8,54 @@
       </div>
       <div>
         <a href="https://stackoverflow.com/users/7325327/gabriel-barreto" target="_blank">Stack Overflow</a>
+=======
+    <div class="links">
+      <h4>Me encontre por ai</h4>
+      <div>
+        <a href="https://www.linkedin.com/in/gabrielapbarreto/" target="_blank" class="btn">LinkedIn</a>
+      </div>
+      <div>
+        <a href="https://stackoverflow.com/users/7325327/gabriel-barreto" title="Stack Overflow" target="_blank" class="btn">Stack</a>
+      </div>
+      <div>
+        <a href="https://github.com/synga" target="_blank" class="btn">GitHub</a>
+>>>>>>> cf3f83088fec850bb7561f3ab018586d042d7a2d
       </div>
     </div>
 
+<<<<<<< HEAD
     <h4>Tem uma dúvida? Uma proposta? Uma ideia? Precisa que algo seja feito? Quer apenas bater um papo sobre qualquer assunto?<br>Deixe uma mensagem e te respondo ASAP.</h4>
     <form method="post" :class="size">
       <div class="label">
         <p>Eu sou</p>
+=======
+    <h4>Tem uma dúvida? Uma proposta? Uma ideia? Precisa que algo seja feito? Quer apenas bater um papo?<br>Deixe uma mensagem e te respondo ASAP.</h4>
+    <br>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <form method="post">
+          <div class="form-group">
+            <label>Me chamo</label>
+            <input class="form-control" type="text" name="nome" id="nome" v-model="formulario.nome" placeholder="Ex: XPTO">
+          </div>
+          <div class="form-group">
+            <label>Quero</label>
+            <input class="form-control" type="text" name="assunto" id="assunto" v-model="formulario.assunto" placeholder="Ex: Bater um papo">
+          </div>
+          <div class="form-group">
+            <label>Me responda no</label>
+            <input class="form-control" type="email" name="email" id="email" v-model="formulario.email">
+          </div>
+          <div class="form-group">
+            <label>Ou pelo telefone </label>
+            <input class="form-control" type="tel" name="telefone" id="telefone" v-model="formulario.phone" pattern="[0-9]*" inputmode="numeric" maxlength="11" placeholder="(XX)XXXXX-XXXX (opcional)">
+          </div>
+          <br>
+          <div class="form-group botao">
+            <button type="submit" class="btn btn-info" @click.prevent="submitForm">Enviar</button>
+          </div>
+        </form>
+>>>>>>> cf3f83088fec850bb7561f3ab018586d042d7a2d
       </div>
       <div class="input">
         <input type="text" name="tipo" id="tipo" v-model="formulario.tipo" placeholder="Ex: Empresa">
@@ -59,7 +101,6 @@ export default {
   data() {
     return {
       formulario: {
-        tipo: "",
         nome: "",
         assunto: "",
         email: "",
@@ -79,9 +120,6 @@ export default {
   methods: {
     submitForm() {
       // VAI VALIDAR OS CAMPOS
-      if (this.formulario.tipo == "") {
-        alert("Preencha quem você é!");
-      }
       if (this.formulario.nome == "") {
         alert("Preencha seu nome!");
       }
@@ -93,7 +131,6 @@ export default {
       }
       // VAI ENVIAR O FORM PRO FIREBASE
       if (
-        this.formulario.tipo != "" &&
         this.formulario.nome != "" &&
         this.formulario.assunto != "" &&
         this.formulario.email != ""
@@ -108,7 +145,10 @@ export default {
           )
           .then(
             res => {
+<<<<<<< HEAD
               this.formulario.tipo = "";
+=======
+>>>>>>> cf3f83088fec850bb7561f3ab018586d042d7a2d
               this.formulario.nome = "";
               this.formulario.assunto = "";
               this.formulario.email = "";
@@ -193,6 +233,7 @@ form.pc {
 }
 
 .links {
+<<<<<<< HEAD
   text-align: center;
   h4 {
     margin-top: 0; 
@@ -209,6 +250,29 @@ form.pc {
     letter-spacing: 5px;
     color: #f33f3f;
     transition: all 0.4s;
+=======
+  display: flex;
+  flex-wrap: wrap;
+  h4 {
+    flex: 1 1 100%;
+  }
+
+  & > div {
+    text-align: center;
+    flex: 1;
+  }
+
+  .btn {
+    text-decoration: none;
+    background-color: rgb(108, 149, 211);
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+  }
+
+  .btn:hover {
+    background-color: rgb(38, 103, 202);
+>>>>>>> cf3f83088fec850bb7561f3ab018586d042d7a2d
   }
 }
 
@@ -224,18 +288,33 @@ form {
   p {
     color: white;
   }
+      .form-group {
+      display: flex;
+      padding: 10px;
+    }
 
   .botao {
     text-align: center;
     grid-column: 1 / span 2;
     .btn {
       font-size: 20px;
+<<<<<<< HEAD
       padding: 10px 40px;
       background-color: transparent;
       border: 2px solid white;
       color: white;
       border-radius: 50px;
       cursor: pointer;
+=======
+      background-color: rgb(108, 149, 211);
+      padding: 10px 20px;
+      color: white;
+      border-radius: 10px;
+    }
+
+    .btn:hover {
+      background-color: rgb(38, 103, 202);
+>>>>>>> cf3f83088fec850bb7561f3ab018586d042d7a2d
     }
   }
 }
