@@ -34,7 +34,8 @@ export default {
 html,
 body,
 .container-fluid {
-  height: 100vh;
+  height: 100%;
+  min-width: 100%;
   margin: 0;
 }
 
