@@ -1,8 +1,11 @@
 <template>
   <div id="projetos">
+    <div class="controls">
+      <button id="voltar" class="btn-voltar" @click="retornaProjeto"> &lt; </button>
+      <h2 v-if="projetoAtual != null">{{projetoAtual.nome}}</h2>
+      <button id="avancar" class="btn-avancar" @click="avancaProjeto"> > </button>
+    </div>
     <app-projeto-card :projeto="projetoAtual" v-if="projetoAtual != null"></app-projeto-card>
-    <button id="voltar" :class="classLeft" @click="retornaProjeto"> &lt; </button>
-    <button id="avancar" :class="classRight" @click="avancaProjeto"> > </button>
   </div>
 </template>
 <script>
@@ -18,19 +21,9 @@ export default {
     };
   },
   components: {
-    appProjetoCard: ProjetoCard,
-    classLeft: "",
-    classRight: ""
+    appProjetoCard: ProjetoCard
   },
   created() {
-    // MANIPULA AS CLASSES DOS BOTÕES
-    if (window.outerWidth < 768) {
-      this.classLeft = "btn-voltar-mobile";
-      this.classRight = "btn-avancar-mobile";
-    } else {
-      this.classLeft = "btn-voltar-desk";
-      this.classRight = "btn-avancar-desk";
-    }
     // AO ENTRAR JOGA A TELA PRO TOPO
     window.scrollTo(0, 0);
 
@@ -40,26 +33,11 @@ export default {
     this.$http
       .get("https://portfolio-gabriel-barreto.firebaseio.com/Projeto.json")
       .then(res => {
-        console.log(res);
         for (let key in res.body) {
           this.projetos.push(res.body[key]);
         }
         this.projetoAtual = this.projetos[this.numeroProjeto];
       });
-  },
-  mounted() {
-    if (window.outerWidth < 768) {
-      let voltar = document.getElementById("voltar");
-      let avancar = document.getElementById("avancar");
-      // ADICIONA O LISTENER DA TELA PARA MANIPULAR O BOTÃO
-      window.addEventListener("scroll", e => {
-        let height = window.outerHeight;
-        let scrollTop = e.target.scrollingElement.scrollTop;
-        console.log(scrollTop);
-        voltar.style.bottom = `-${scrollTop}px`;
-        avancar.style.bottom = `-${scrollTop}px`;
-      });
-    }
   },
   methods: {
     avancaProjeto() {
@@ -100,11 +78,23 @@ button:active {
   background-color: gray;
 }
 
-.btn-voltar-desk {
+.controls {
+  display: grid;
+  grid-template: 80px / 50px 1fr 50px;
+  margin-bottom: 10px;
+  padding-top: 5px;
+}
+
+h2 {
+  text-align: center;
+  align-self: center;
+  margin: 0;
+  line-height: 1em;
+  padding: 0 5px;
+}
+
+.btn-voltar {
   transition: all 0.8s ease-out;
-  position: absolute;
-  top: 50vh;
-  left: 0;
   border: none;
   box-sizing: border-box;
   padding: 20px 10px;
@@ -114,41 +104,12 @@ button:active {
   font-family: monospace;
 }
 
-.btn-avancar-desk {
+.btn-avancar {
   transition: all 0.8s ease-out;
-  position: absolute;
-  top: 50vh;
-  right: 0;
   border: none;
   box-sizing: border-box;
   padding: 20px 10px;
   border-bottom-left-radius: 50px;
-  border-top-left-radius: 50px;
-  font-size: 30px;
-  font-family: monospace;
-}
-
-.btn-voltar-mobile {
-  transition: all 0.8s ease-out;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  border: none;
-  box-sizing: border-box;
-  padding: 10px 25px 5px 10px;
-  border-top-right-radius: 50px;
-  font-size: 30px;
-  font-family: monospace;
-}
-
-.btn-avancar-mobile {
-  transition: all 0.8s ease-out;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  border: none;
-  box-sizing: border-box;
-  padding: 10px 10px 5px 25px;
   border-top-left-radius: 50px;
   font-size: 30px;
   font-family: monospace;

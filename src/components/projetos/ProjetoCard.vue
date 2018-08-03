@@ -1,12 +1,11 @@
 <template>
   <div class="card">
-    <h2>{{projeto.nome}}</h2>
     <div class="row">
       <div class="col-sm-10 col-sm-offset-1" id="img-container">
         <div class="row info">
           <div class="col-xs-6">Conclusão: {{projeto.duracao}}</div>
           <div class="col-xs-6">Realizado em {{projeto.ano}}</div>
-          <br><br>
+          <br>
           <p>{{projeto.descricao}}</p>
         </div>
         <img :src="projeto.foto" :alt="projeto.nome" @load="imageLoaded">
@@ -43,11 +42,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-h2 {
-  text-align: center;
-  margin: 0;
-  padding: 15px;
-}
 
 img {
   max-width: 100%;
@@ -60,6 +54,11 @@ img {
 .info {
   background-color: rgba(255, 255, 255, 0.7);
   padding: 10px;
+  line-height: 1.2em;
+
+  a {
+    line-height: 2em;
+  }
 }
 
 .row.info.links {
