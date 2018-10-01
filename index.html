@@ -5,25 +5,50 @@
     <meta charset="utf-8">
     <title>GABS</title>
     <link rel="shortcut icon" type="image/png" href="./dist/assets/favicon.png">
+    <!-- MANIFEST -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="GABS">
+    <link rel="apple-touch-icon" href="/dist/assets/icons/icon_48.png" sizes="48x48">
+    <link rel="apple-touch-icon" href="/dist/assets/icons/icon_60.png" sizes="96x96">
+    <link rel="apple-touch-icon" href="/dist/assets/icons/icon_72.png" sizes="144x144">
+    <meta name="msapplication-TileColor" content="#fff">
+    <meta name="theme-color" content="#3f51b5">
     <!-- FACEBOOK METAS -->
-    <meta property="og:image" content="./dist/cartao.jpg" />
-    <meta property="og:title" content="Gabriel Barreto | Desenvolvedor" />
-    <meta property="og:site_name" content="Gabriel Barreto | Desenvolvedor" />
-    <meta property="og:url" content="https://www.barretogabriel.com.br/" />
+    <meta property="og:image" content="./dist/cartao.jpg">
+    <meta property="og:title" content="Gabriel Barreto | Desenvolvedor">
+    <meta property="og:site_name" content="Gabriel Barreto | Desenvolvedor">
+    <meta property="og:url" content="https://www.barretogabriel.com.br/">
     <!-- END FACEBOOK METAS -->
     <!-- START TWITTER METAS -->
-    <meta name="twitter:card" content="summary_large_image"></meta>
-    <meta name="twitter:creator" content="@syn_ga"></meta>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@syn_ga">
     <!-- END TWITTER METAS -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Desenvolvedor, Ionic, Angular, Vue, Firebase">
     <meta name="author" content="Gabriel Barreto">
     <meta name="keywords" content="Javascript, Ionic 3, StencilJS, Angular">
     <link href="https://fonts.googleapis.com/css?family=Bungee|Chau+Philomene+One|Baloo+Bhaijaan" rel="stylesheet">
+    <!-- SW -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker
+                .register('/sw.js')
+                .then(function() {
+                    console.log('Service worker registered!');
+                })
+                .catch(function(err) {
+                    console.log(err);
+                });
+        }
+    </script>
 </head>
 
 <body>
     <div id="app"></div>
+    <script src="./dist/assets/js/promise.js"></script>
+    <script src="./dist/assets/js/fetch.js"></script>
     <script src="./dist/build.js"></script>
 </body>
 

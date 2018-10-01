@@ -8,6 +8,10 @@
 </template>
 
 <script>
+if (!window.Promise) {
+  window.Promise = Promise;
+};
+
 import { eventBus } from "./main";
 import Loading from "./components/shared/Loading.vue";
 export default {
@@ -19,9 +23,7 @@ export default {
   components: {
     appLoading: Loading
   },
-  mounted(){
-    
-  },
+  mounted() {},
   created() {
     eventBus.$on("loading", load => {
       this.isLoading = load;

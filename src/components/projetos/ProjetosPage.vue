@@ -1,9 +1,9 @@
 <template>
   <div id="projetos">
     <div class="controls">
-      <button id="voltar" class="btn-voltar" @click="retornaProjeto"> &lt; </button>
+      <button id="voltar" class="btn btn-voltar" @click="retornaProjeto"> &lt; </button>
       <h2 v-if="projetoAtual != null">{{projetoAtual.nome}}</h2>
-      <button id="avancar" class="btn-avancar" @click="avancaProjeto"> > </button>
+      <button id="avancar" class="btn btn-avancar" @click="avancaProjeto"> > </button>
     </div>
     <app-projeto-card :projeto="projetoAtual" v-if="projetoAtual != null"></app-projeto-card>
   </div>
@@ -30,19 +30,22 @@ export default {
     // ACIONA O LOADING
     eventBus.loading(true);
 
-    this.$http
-      .get("https://portfolio-gabriel-barreto.firebaseio.com/Projeto.json")
-      .then(res => {
-        for (let key in res.body) {
-          this.projetos.push(res.body[key]);
+    fetch("https://portfolio-gabriel-barreto.firebaseio.com/Projeto.json", {
+      method: "GET"
+    })
+      .then(response => response.json())
+      .then(response => {
+        console.log(response);
+        for (let key in response) {
+          this.projetos.push(response[key]);
         }
         this.projetoAtual = this.projetos[this.numeroProjeto];
+        eventBus.loading(false);
       });
   },
   methods: {
     avancaProjeto() {
       window.scrollTo(0, 0);
-      eventBus.loading(true);
       this.numeroProjeto++;
       if (this.numeroProjeto > this.projetos.length - 1) {
         this.numeroProjeto = 0;
@@ -53,7 +56,6 @@ export default {
     },
     retornaProjeto() {
       window.scrollTo(0, 0);
-      eventBus.loading(true);
       this.numeroProjeto--;
       if (this.numeroProjeto < 0) {
         this.numeroProjeto = this.projetos.length - 1;
@@ -93,26 +95,27 @@ h2 {
   padding: 0 5px;
 }
 
-.btn-voltar {
+.btn {
+  font-size: 30px;
+  font-family: monospace;
   transition: all 0.8s ease-out;
   border: none;
   box-sizing: border-box;
   padding: 20px 10px;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn-voltar {
   border-bottom-right-radius: 50px;
   border-top-right-radius: 50px;
-  font-size: 30px;
-  font-family: monospace;
 }
 
 .btn-avancar {
-  transition: all 0.8s ease-out;
-  border: none;
-  box-sizing: border-box;
-  padding: 20px 10px;
   border-bottom-left-radius: 50px;
   border-top-left-radius: 50px;
-  font-size: 30px;
-  font-family: monospace;
 }
 
 #projetos {

@@ -12,7 +12,7 @@ O projeto constitui de um portfólio desenvolvido utilizando VueJS e Firebase pa
 * ~~Fazer o formulário para contato.~~
 * Se for possível separar mais por componentes, como por enquanto as views estão bem básicas não senti necessidade de desenvolver componentes diferentes, talvez na Home por repetir o uso dos quadros.
 * ~~Melhorar o código na página de projetos, foi feito as pressas.~~
-* PWA, ao menos para salvar o conteúdo offline, abrir em full screen, uma splash e salvar na tela inicial.
+* ~~PWA, ao menos para salvar o conteúdo offline, abrir em full screen, uma splash e salvar na tela inicial.
 * Melhorar a performance, no teste do Lighthouse no Chrome ficou com 77 em performance (ou algo assim).
 * ~~Diminuir as dependências do firebase, está bem pesado por ser em Vue (+/- 700kb) e tenho certeza que posso melhorar isso mexendo nas dependencias e subindo apenas o que é necessário para produção.~~
 

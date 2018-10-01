@@ -8,7 +8,9 @@
           <br>
           <p>{{projeto.descricao}}</p>
         </div>
-        <img :src="projeto.foto" :alt="projeto.nome" @load="imageLoaded">
+        <div style="text-align: center">
+          <img :src="projeto.foto" :alt="projeto.nome"> 
+        </div>
         <div class="info">
           <h4>Tecnologias principais utilizadas:<br>
             <small>{{projeto.tecnologias}}</small>
@@ -16,7 +18,7 @@
         </div>
         <div class="row info links" v-if="projeto['links']">
           <h4>Links para o projeto</h4>
-          <div :class="`col-xs-${12 / Object.keys(projeto['links']).length}`" v-for="(link, key, index) of projeto.links" :key="key">
+          <div :class="`col-xs-${12 / Object.keys(projeto['links']).length}`" v-for="(link, key) of projeto.links" :key="key">
             <a :href="link" class="btn btn-success" target="_blank">{{key}}</a>
           </div>
         </div>
@@ -33,11 +35,6 @@ export default {
     return {
       show: true
     };
-  },
-  methods: {
-    imageLoaded() {
-      eventBus.loading(false);
-    }
   }
 };
 </script>
