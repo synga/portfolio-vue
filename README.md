@@ -17,7 +17,8 @@ O projeto constitui de um portfólio desenvolvido utilizando VueJS e Firebase pa
 * ~~Diminuir as dependências do firebase, está bem pesado por ser em Vue (+/- 700kb) e tenho certeza que posso melhorar isso mexendo nas dependencias e subindo apenas o que é necessário para produção.~~
 
 ### Teste de Performance do Lighthouse
-
+![Performance](https://raw.githubusercontent.com/synga/portfolio-vue/master/Performance.PNG)
+Teste feito em 21/08/2019
 
 ### Contato
 Qualquer dúvida, sugestão ou o que for preciso podem abrir uma issue ou entrar em contato comigo pelo [LinkedIn](https://www.linkedin.com/in/gabrielapbarreto/)
